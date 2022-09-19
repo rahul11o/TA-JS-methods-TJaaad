@@ -1,7 +1,8 @@
 // NOTE: You can not use reduce methods to solve this exercise
+// Empty push
 
 function countAllPeople() {
-  // your code goes here
+  
 }
 
 function peopleByHouses() {
