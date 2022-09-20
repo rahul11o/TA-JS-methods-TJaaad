@@ -1,37 +1,114 @@
 // NOTE: You can not use reduce methods to solve this exercise
-// Empty push
+
+
+// function countAllPeople() {
+//   let count = 0;
+//    for(let peoples of got.houses){
+//    for(let ppl of peoples.people){
+//     if(ppl.name){
+//       count = count +1
+//     }
+//    }}
+//    return count;
+//}
 
 function countAllPeople() {
-  
+  let totalPeople = 0;
+  got.houses.forEach((house) => {
+    totalPeople = totalPeople + house.people.length;
+  });
+  return totalPeople;
 }
+
+//-------------------****************------------------------
 
 function peopleByHouses() {
-  // your code goes here
+let houseAndPpl = {};
+got.houses.forEach(function(elem){
+  houseAndPpl[elem.name] = elem.people.length;
+})
+return houseAndPpl;
 }
+
+
+//-------------------****************------------------------
 
 function everyone() {
-  // your code goes here
+let everyoneName =[];
+ got.houses.forEach(function(elem){
+   elem.people.forEach(function(elem2){
+       everyoneName.push(elem2.name)
+   })
+ })
+ return everyoneName
 }
+
+// function everyone() {
+//   let final = [];
+//   got.houses.forEach((house) => {
+//     let peopleName = house.people.map((person) => person.name);
+//     final = final.concat(peopleName);
+//   });
+//   return final;
+// }
+
+//-------------------****************------------------------
 
 function nameWithS() {
-  // your code goes here
+  let sName = [];
+ everyone().forEach(function(elem){
+ if(elem.includes("s")|| elem.includes("S")){
+  sName.push(elem);
+ }
+ })
+ return sName;
 }
+
+
+// function nameWithS() {
+//   let allPeople = everyone();
+//   return allPeople.filter(name => name.toLowerCase().includes('s'));
+// }
+
+
+//-------------------****************------------------------
+
 
 function nameWithA() {
-  // your code goes here
+  return everyone().filter((elem) => elem.toLowerCase().includes("a"));
 }
 
-function surnameWithS() {
-  // your code goes here
-}
+//-------------------****************------------------------
+
 
 function surnameWithA() {
-  // your code goes here
+   let name_SurnameWithA =  everyone().filter((elem) => elem.split(" ")[1].toLowerCase().includes("a"));
+    return name_SurnameWithA.map((elem) => elem.split(" ")[1])
 }
 
-function peopleNameOfAllHouses() {
-  // your code goes here
+
+//-------------------****************------------------------
+
+
+
+function surnameWithS() {
+    let name_SurnameWithS =  everyone().filter((elem) => elem.split(" ")[1].toLowerCase().includes("s"));
+     return name_SurnameWithS.map((elem) => elem.split(" ")[1])
 }
+
+
+//-------------------****************------------------------
+
+
+ function peopleNameOfAllHouses() {
+  let final = {};
+  got.houses.forEach((house) => {
+    final[house.name] = house.people.map((p) => p.name);
+  });
+  return final;
+}
+
+
 
 // Testing your result after writing your function
 console.log(countAllPeople());
